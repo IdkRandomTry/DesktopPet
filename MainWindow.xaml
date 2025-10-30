@@ -1,0 +1,48 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pet.MainWindow"
+        Title="Desktop Pet"
+  Background="Transparent"
+   TransparencyLevelHint="Transparent"
+     ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+  ExtendClientAreaTitleBarHeightHint="-1"
+   SystemDecorations="None"
+     WindowState="Maximized"
+        CanResize="False"
+    Topmost="True">
+
+    <Grid>
+     <!-- Mouse tail polyline -->
+<Polyline x:Name="mouseTail"
+        Stroke="Cyan"
+   StrokeThickness="4"
+      Opacity="0.7"
+         StrokeLineCap="Round"
+       StrokeJoin="Round"
+              IsHitTestVisible="False" />
+
+      <!-- Close button (cross) at right center -->
+        <Button x:Name="closeButton"
+                HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+              Width="40"
+     Height="40"
+   Margin="0,0,20,0"
+        Background="#80FF0000"
+     BorderBrush="Red"
+       BorderThickness="2"
+ Cursor="Hand"
+        Click="CloseButton_Click">
+ <TextBlock Text="✕"
+       FontSize="24"
+      FontWeight="Bold"
+    Foreground="White"
+            HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+        </Button>
+    </Grid>
+</Window>
