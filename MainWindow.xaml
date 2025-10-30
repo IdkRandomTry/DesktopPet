@@ -34,7 +34,8 @@
        BorderBrush="Red"
           BorderThickness="2"
     Cursor="Hand"
-     Click="CloseButton_Click">
+     Click="CloseButton_Click"
+    Visibility="Collapsed">
     <TextBlock Text="✕"
                    FontSize="24"
   FontWeight="Bold"

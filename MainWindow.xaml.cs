@@ -12,6 +12,9 @@ namespace Pet
         [DllImport("user32.dll")]
         private static extern bool GetCursorPos(out POINT lpPoint);
 
+        [DllImport("user32.dll")]
+        private static extern int GetSystemMetrics(int nIndex);
+
         [StructLayout(LayoutKind.Sequential)]
         private struct POINT
         {
@@ -19,9 +22,12 @@ namespace Pet
             public int Y;
         }
 
+        private const int SM_CXSCREEN = 0; // Width of the screen of the primary display monitor
+
         private Point[] _tailPoints;
         private const int MaxTailLength = 25;
         private DispatcherTimer _timer;
+        private const double CloseButtonThreshold = 0.9; 
 
         public MainWindow()
         {
@@ -66,6 +72,13 @@ namespace Pet
             // Get the current mouse position relative to the screen
             if (GetCursorPos(out POINT cursorPos))
             {
+                // Get actual physical screen width (not DPI-scaled)
+                int screenWidth = GetSystemMetrics(SM_CXSCREEN);
+                double thresholdX = screenWidth * CloseButtonThreshold;
+
+                // Show/hide close button based on mouse X position
+                closeButton.Visibility = cursorPos.X > thresholdX ? Visibility.Visible : Visibility.Collapsed;
+
                 // Convert screen coordinates to WPF device-independent pixels
                 Point screenPoint = new Point(cursorPos.X + 5, cursorPos.Y + 5);
 
